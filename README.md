@@ -1,7 +1,9 @@
 # Quiz Game
 
 This is a quiz game implemented using React. The objective of the game is to arrange a set of numbers in ascending order. The game provides a set of input fields where the numbers can be dropped, and a set of options that can be dragged and dropped onto the input fields.
-**You can play this game on this website** **[https://byte-learn.vercel.app/]('https://byte-learn.vercel.app/')**
+&nbsp;
+
+**You can play with this game on this website [https://byte-learn.vercel.app/](https://byte-learn.vercel.app/)**
 
 ## How It Works
 
