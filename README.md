@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Quiz Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a quiz game implemented using React. The objective of the game is to arrange a set of numbers in ascending order. The game provides a set of input fields where the numbers can be dropped, and a set of options that can be dragged and dropped onto the input fields.
+**You can play this game on this website** **[https://byte-learn.vercel.app/]('https://byte-learn.vercel.app/')**
 
-## Available Scripts
+## How It Works
 
-In the project directory, you can run:
+### Initial Setup
 
-### `npm start`
+When the game component (`Game`) is rendered, it initializes the game by calling the `initializeGame` function. The `initializeGame` function performs the following tasks:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Resets the input values to an empty array and generates a new set of options.
+2. Disables the check button (`Check Answer`).
+3. Adds drag events to the input fields.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Generating Options
 
-### `npm test`
+The `generateOptions` function generates a set of random numbers and stores them in the `options` state variable. This function is called during the game initialization to generate a new set of options.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Drag and Drop
 
-### `npm run build`
+The game utilizes HTML5 drag and drop functionality for the drag and drop interactions. Each input field is made draggable, and each option is made a drop target. The following events and functions are involved in the drag and drop functionality:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `handleDragStart`: This function is called when an option is dragged. It sets the dragged value as the data being transferred.
+- `handleInputDragStart`: This function is called when an input field is dragged. It sets the dragged value as the data being transferred.
+- `handleDragOver`: This function is called when an option is dragged over a valid drop target. It prevents the default behavior to allow dropping.
+- `handleDrop`: This function is called when an option is dropped onto an input field. It retrieves the dragged value and assigns it to the target input field. The dropped option is then removed from the options container. If a previous input field contained the same value, it is cleared. The function also updates the input values state and enables/disables the check button based on the filled input fields.
+- `addInputDragEvents`: This function adds drag events to each input field. It sets the `draggable` property to `true` and assigns the `ondragstart` event handler to `handleInputDragStart`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Checking the Answer
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When the user clicks the check button, the `checkAnswer` function is called. It compares the input values with a sorted version of the values to determine if the numbers are arranged in ascending order. If the values match, a "Correct!" message is displayed, otherwise a "Wrong! Please try again." message is displayed. The user is then navigated to a result page with the corresponding message.
 
-### `npm run eject`
+### Handling Input Changes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The `handleInputChange` function is called when the value of an input field changes. It updates the corresponding value in the `inputValues` state array.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The game component relies on the following dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `React`: The core library for building the user interface.
+- `react-router-dom`: A library for handling navigation between pages in a React application.
 
-## Learn More
+Please make sure these dependencies are installed and properly configured in your project.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
